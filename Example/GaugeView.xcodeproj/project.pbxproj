@@ -15,6 +15,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7BFF1D3B81981A9995BA39AC /* Pods_GaugeView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1856CE58321640A39D9E6EF /* Pods_GaugeView_Tests.framework */; };
 		9D3917BE4992CA36F4E7D9E0 /* Pods_GaugeView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA240D89EFCC992C58FC4A31 /* Pods_GaugeView_Example.framework */; };
+		D690975C1CE3C8AC00509EF0 /* FitnessGaugeSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D690975B1CE3C8AC00509EF0 /* FitnessGaugeSliceView.swift */; };
 		D6B0665A1CE360DC004BB458 /* FitnessGaugeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B066591CE360DC004BB458 /* FitnessGaugeView.xib */; };
 		D6B0665C1CE362CE004BB458 /* FitnessGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0665B1CE362CE004BB458 /* FitnessGaugeView.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		B2A541C090BD773A0F9701BF /* Pods-GaugeView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GaugeView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GaugeView_Tests/Pods-GaugeView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C6078253D7E15C32E5381D6A /* GaugeView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GaugeView.podspec; path = ../GaugeView.podspec; sourceTree = "<group>"; };
 		D1856CE58321640A39D9E6EF /* Pods_GaugeView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GaugeView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D690975B1CE3C8AC00509EF0 /* FitnessGaugeSliceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessGaugeSliceView.swift; sourceTree = "<group>"; };
 		D6B066591CE360DC004BB458 /* FitnessGaugeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitnessGaugeView.xib; sourceTree = "<group>"; };
 		D6B0665B1CE362CE004BB458 /* FitnessGaugeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessGaugeView.swift; sourceTree = "<group>"; };
 		E0585A5280141A2A4BB0DBA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				D690975B1CE3C8AC00509EF0 /* FitnessGaugeSliceView.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				D6B066591CE360DC004BB458 /* FitnessGaugeView.xib */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -368,6 +371,7 @@
 			files = (
 				D6B0665C1CE362CE004BB458 /* FitnessGaugeView.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				D690975C1CE3C8AC00509EF0 /* FitnessGaugeSliceView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
