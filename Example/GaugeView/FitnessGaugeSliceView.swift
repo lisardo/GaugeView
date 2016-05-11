@@ -23,6 +23,7 @@ import GaugeView
     
     internal override init(frame: CGRect) {
         super.init(frame: frame)
+        drawAnchorLine()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -32,6 +33,7 @@ import GaugeView
     
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
     }
     
     override public func layoutSubviews() {
@@ -51,6 +53,8 @@ import GaugeView
         
         self.addSubview(gaugeView!)
         gaugeView.sizeToFit()
+        
+        drawAnchorLine()
     }
     
     func setupFitnessParams(param: Float) {
@@ -62,10 +66,38 @@ import GaugeView
         let percentage = CGFloat(param/17.0)
         let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
         
-        
         gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
         gaugeView.setNeedsDisplay()
         gaugeView.percentage = param
     }
+    
+    func drawAnchorLine() {
+        
+        let path = UIBezierPath()
+        
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        path.moveToPoint(center)
+        
+        let deltax = CGFloat(cos(self.startAngle.degreesToRadians)*100.0)
+        let deltay = CGFloat(sin(self.startAngle.degreesToRadians)*100.0)
+        let p2 = CGPointMake(center.x + deltax, center.y + deltay)
+        
+        path.addLineToPoint(p2)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.CGPath
+        shapeLayer.strokeColor = UIColor.brownColor().CGColor
+        shapeLayer.lineWidth = 3.0
+        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        
+        self.layer.addSublayer(shapeLayer)
+        
+        
+    }
+}
+
+extension Float {
+    var doubleValue:      Double { return Double(self) }
+    var degreesToRadians: Float  { return Float(doubleValue * M_PI / 180) }
     
 }
