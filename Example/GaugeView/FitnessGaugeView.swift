@@ -3,6 +3,15 @@ import GaugeView
 
 @IBDesignable
 class FitnessGaugeView: UIView {
+    
+    @IBOutlet weak var gaugeView1: GaugeView!
+    
+    @IBOutlet weak var gaugeView2: GaugeView!
+    @IBOutlet weak var gaugeView3: GaugeView!
+    @IBOutlet weak var gaugeView4: GaugeView!
+    @IBOutlet weak var gaugeView5: GaugeView!
+    @IBOutlet weak var gaugeView6: GaugeView!
+    
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if tag == 10 {
             return self
@@ -13,6 +22,7 @@ class FitnessGaugeView: UIView {
         viewFromNib.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
+        
         return viewFromNib
     }
 }

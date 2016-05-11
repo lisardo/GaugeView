@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w92-z0-bbv" customClass="GaugeView" customModule="GaugeView">
+                <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w92-z0-bbv" customClass="GaugeView" customModule="GaugeView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="1" green="0.72278066860000001" blue="0.26553758669999999" alpha="0.0" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -32,7 +32,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-Ec-YEn" customClass="GaugeView" customModule="GaugeView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-Ec-YEn" customClass="GaugeView" customModule="GaugeView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="1" green="0.72278066858531154" blue="0.26553758673402605" alpha="0.0" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -53,7 +53,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-ba-v8w" customClass="GaugeView" customModule="GaugeView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-ba-v8w" customClass="GaugeView" customModule="GaugeView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="1" green="0.72278066860000001" blue="0.26553758669999999" alpha="0.0" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -74,7 +74,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="efh-sR-vWy" customClass="GaugeView" customModule="GaugeView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efh-sR-vWy" customClass="GaugeView" customModule="GaugeView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.1868563003" green="1" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -95,7 +95,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-we-gxG" customClass="GaugeView" customModule="GaugeView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-we-gxG" customClass="GaugeView" customModule="GaugeView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.18685630029719213" green="1" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -140,11 +140,39 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.96769673653322674" blue="0.99547473856191326" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="efh-sR-vWy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1ks-tw-ZKp"/>
+                <constraint firstItem="efh-sR-vWy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="62d-Kh-lhP"/>
                 <constraint firstItem="bs8-yr-uXy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="9Py-Hx-aQO"/>
+                <constraint firstItem="pj8-we-gxG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="CSt-iI-EN6"/>
                 <constraint firstItem="bs8-yr-uXy" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="DOr-m7-5Vl"/>
                 <constraint firstItem="bs8-yr-uXy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EzH-JW-6ih"/>
+                <constraint firstItem="w92-z0-bbv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GUK-1s-eNy"/>
+                <constraint firstItem="efh-sR-vWy" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="HJu-qK-oTu"/>
+                <constraint firstItem="xdl-ba-v8w" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JCW-Bz-t6T"/>
+                <constraint firstItem="pj8-we-gxG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JQW-C3-ezF"/>
+                <constraint firstItem="w92-z0-bbv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="K3a-AV-RSM"/>
+                <constraint firstItem="pj8-we-gxG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Llm-jX-EG4"/>
+                <constraint firstItem="w92-z0-bbv" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Oti-ae-9Ce"/>
                 <constraint firstItem="bs8-yr-uXy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ryr-zd-rLg"/>
+                <constraint firstItem="xdl-ba-v8w" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ZMM-se-xyF"/>
+                <constraint firstItem="efh-sR-vWy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="d7T-C0-7Rn"/>
+                <constraint firstItem="jmN-Ec-YEn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="e46-QC-0Zc"/>
+                <constraint firstItem="xdl-ba-v8w" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="hpR-qG-5Xh"/>
+                <constraint firstItem="w92-z0-bbv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="mcD-x4-96Z"/>
+                <constraint firstItem="pj8-we-gxG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mh3-aI-u4p"/>
+                <constraint firstItem="jmN-Ec-YEn" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="n8B-Nt-eLA"/>
+                <constraint firstItem="xdl-ba-v8w" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nNl-90-nnb"/>
+                <constraint firstItem="jmN-Ec-YEn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="o6u-qm-JRM"/>
+                <constraint firstItem="jmN-Ec-YEn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="opn-3x-3Gm"/>
             </constraints>
+            <connections>
+                <outlet property="gaugeView1" destination="w92-z0-bbv" id="cQn-BI-mKX"/>
+                <outlet property="gaugeView2" destination="jmN-Ec-YEn" id="bll-JW-hDz"/>
+                <outlet property="gaugeView3" destination="xdl-ba-v8w" id="pb8-jF-qfb"/>
+                <outlet property="gaugeView4" destination="efh-sR-vWy" id="OGa-4u-QXD"/>
+                <outlet property="gaugeView5" destination="pj8-we-gxG" id="Yf3-hZ-CqN"/>
+                <outlet property="gaugeView6" destination="bs8-yr-uXy" id="0EB-Zu-5fP"/>
+            </connections>
         </view>
     </objects>
 </document>
