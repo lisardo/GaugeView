@@ -40,6 +40,9 @@
                             <constraint firstItem="GGn-Zt-eaq" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="tpA-vF-ltJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="fitnessGaugeView" destination="GGn-Zt-eaq" id="bKW-DX-mMm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

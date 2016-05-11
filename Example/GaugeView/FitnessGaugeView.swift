@@ -12,6 +12,8 @@ class FitnessGaugeView: UIView {
     @IBOutlet weak var gaugeView5: GaugeView!
     @IBOutlet weak var gaugeView6: GaugeView!
     
+    
+    
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if tag == 10 {
             return self
@@ -22,8 +24,24 @@ class FitnessGaugeView: UIView {
         viewFromNib.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
-        
+        setupFitnessMetrics(viewFromNib)
         return viewFromNib
+        
+    }
+    
+    private func setupFitnessMetrics(view: FitnessGaugeView) {
+        for gauge in view.gauges() {
+            let randomValue = arc4random_uniform(16)
+            gauge.percentage = Float(randomValue)
+        }
+    }
+    
+    func setupFitnessMetrics() {
+        setupFitnessMetrics(self)
+    }
+    
+    func gauges() -> [GaugeView] {
+        return [gaugeView1, gaugeView2, gaugeView3, gaugeView4, gaugeView5, gaugeView6]
     }
 }
 

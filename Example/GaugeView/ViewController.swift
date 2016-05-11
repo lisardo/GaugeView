@@ -11,6 +11,7 @@ import GaugeView
 
 class ViewController: UIViewController {
   
+    @IBOutlet weak var fitnessGaugeView: FitnessGaugeView!
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -26,7 +27,8 @@ class ViewController: UIViewController {
   
   
   @IBAction func didPressOnButton(sender: AnyObject) {
-    let randomValue = arc4random_uniform(100)
+    
+    fitnessGaugeView.setupFitnessMetrics()
 //    gaugeView.percentage = Float(randomValue)
 //    gaugeView.labelText = "\(randomValue)%"
   }
