@@ -5,14 +5,25 @@ import GaugeView
 class FitnessGaugeView: UIView {
     
     @IBOutlet weak var gaugeView1: GaugeView!
-    
     @IBOutlet weak var gaugeView2: GaugeView!
     @IBOutlet weak var gaugeView3: GaugeView!
     @IBOutlet weak var gaugeView4: GaugeView!
     @IBOutlet weak var gaugeView5: GaugeView!
     @IBOutlet weak var gaugeView6: GaugeView!
     
+    @IBOutlet weak var trackTimeButton: UIButton!
     
+    var flag = false
+    
+    @IBAction func didSelect(sender: UIButton) {
+        let color = flag ? UIColor.blueColor(): UIColor.grayColor()
+        flag = !flag
+        if sender == trackTimeButton {
+            self.gaugeView5.gaugeColor = color
+            self.gaugeView5.setNeedsDisplay()
+            self.gaugeView5.percentage += 0.01
+        }
+    }
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if tag == 10 {

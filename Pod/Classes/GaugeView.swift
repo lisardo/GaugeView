@@ -32,7 +32,7 @@ public class GaugeView: UIView {
   
   private var label: UILabel!
   
-  private var gaugeLayer: GaugeLayer!
+  var gaugeLayer: GaugeLayer!
   
   //Gauge property
   
@@ -90,6 +90,12 @@ public class GaugeView: UIView {
   ///
   
   //MARK: - Init methods
+    
+    public func setColor(color:UIColor) {
+        gaugeLayer.gaugeColor = color
+        gaugeLayer.needsLayout()
+        gaugeLayer.needsDisplay()
+    }
   public override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -127,6 +133,7 @@ public class GaugeView: UIView {
     createGaugeView()
     createTitleLabel()
   }
+    
   
   private func createGaugeView() {
     gaugeLayer = GaugeLayer(layer: layer)
