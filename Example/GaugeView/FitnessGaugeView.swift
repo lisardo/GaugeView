@@ -35,13 +35,16 @@ class FitnessGaugeView: UIView {
         viewFromNib.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
-        setupFitnessMetrics(viewFromNib)
+//        setupFitnessMetrics(viewFromNib)
         return viewFromNib
         
     }
     
     private func setupFitnessMetrics(view: FitnessGaugeView) {
-//        for gauge in view.gauges() {
+        for metricDisplay in view.metrics() {
+            let randomValue = arc4random_uniform(17)
+            metricDisplay.setupFitnessParams(Float(randomValue))
+        }
 //            let randomValue = arc4random_uniform(17)
 //            let mininumGray = CGFloat(0.25)
 //            let percentage = CGFloat(Float(randomValue)/17.0)
@@ -78,9 +81,9 @@ class FitnessGaugeView: UIView {
         setupFitnessMetrics(self)
     }
 //    
-//    func gauges() -> [GaugeView] {
-//        return [gaugeView1, gaugeView2, gaugeView3, gaugeView4, gaugeView5, gaugeView6]
-//    }
+    func metrics() -> [FitnessGaugeSliceView] {
+        return [gaugeView1, gaugeView2, gaugeView3, gaugeView4, gaugeView5, gaugeView6]
+    }
 }
 
 

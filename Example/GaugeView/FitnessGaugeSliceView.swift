@@ -23,7 +23,6 @@ import GaugeView
     
     internal override init(frame: CGRect) {
         super.init(frame: frame)
-//        setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -32,8 +31,7 @@ import GaugeView
     
     
     override public func awakeFromNib() {
-        super.awakeFromNib()   
-//        setup()
+        super.awakeFromNib()
     }
     
     override public func layoutSubviews() {
@@ -51,9 +49,23 @@ import GaugeView
         gaugeView.startAngle = self.startAngle
         gaugeView.percentage = percentage
         
-        
         self.addSubview(gaugeView!)
         gaugeView.sizeToFit()
+    }
+    
+    func setupFitnessParams(param: Float) {
+        guard gaugeView != nil else {
+            return
+        }
+        
+        let mininumGray = CGFloat(0.25)
+        let percentage = CGFloat(param/17.0)
+        let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
+        
+        
+        gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
+        gaugeView.setNeedsDisplay()
+        gaugeView.percentage = param
     }
     
 }
