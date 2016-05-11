@@ -16,7 +16,7 @@ class FitnessGaugeView: UIView {
     var flag = false
     
     @IBAction func didSelect(sender: UIButton) {
-        let color = flag ? UIColor.blueColor(): UIColor.grayColor()
+        let color = flag ? UIColor.lightGrayColor(): UIColor.redColor()
         flag = !flag
         if sender == trackTimeButton {
             self.gaugeView5.gaugeColor = color
@@ -42,7 +42,15 @@ class FitnessGaugeView: UIView {
     
     private func setupFitnessMetrics(view: FitnessGaugeView) {
         for gauge in view.gauges() {
-            let randomValue = arc4random_uniform(16)
+            let randomValue = arc4random_uniform(17)
+            let maxGray = CGFloat(0.75)
+            let mininumGray = CGFloat(0.25)
+            let percentage = CGFloat(Float(randomValue)/17.0)
+            let grayPercentage = CGFloat(1.0 - (percentage * 0.5+mininumGray))
+            
+            
+            gauge.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
+            gauge.setNeedsDisplay()
             gauge.percentage = Float(randomValue)
         }
     }
