@@ -76,12 +76,18 @@ import GaugeView
         let path = UIBezierPath()
         
         let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-        path.moveToPoint(center)
+
+        let length: Float = Float(self.frame.width)/2.0
         
-        let deltax = CGFloat(cos(self.startAngle.degreesToRadians)*100.0)
-        let deltay = CGFloat(sin(self.startAngle.degreesToRadians)*100.0)
+        var deltax = CGFloat(cos(self.startAngle.degreesToRadians)*100.0)
+        var deltay = CGFloat(sin(self.startAngle.degreesToRadians)*100.0)
+        let p1 = CGPointMake(center.x + deltax, center.y + deltay)
+        
+        deltax = CGFloat(cos(self.startAngle.degreesToRadians)*length )
+        deltay = CGFloat(sin(self.startAngle.degreesToRadians)*length )
         let p2 = CGPointMake(center.x + deltax, center.y + deltay)
         
+        path.moveToPoint(p1)
         path.addLineToPoint(p2)
         
         let shapeLayer = CAShapeLayer()
