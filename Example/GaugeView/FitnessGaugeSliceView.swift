@@ -50,15 +50,11 @@ import GaugeView
         gaugeView.gaugeColor = UIColor.darkGrayColor()
         gaugeView.startAngle = self.startAngle
         gaugeView.percentage = percentage
+        
         self.addSubview(gaugeView!)
         gaugeView.sizeToFit()
-
-        drawAnchorLine()
         
-        let gradient = UIImageView(image: UIImage(named: "RadialGradientAlpha"))
-        gradient.center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-        self.addSubview(gradient)
-        self.sizeToFit()
+        drawAnchorLine()
     }
     
     func setupFitnessParams(param: Float) {
@@ -66,18 +62,14 @@ import GaugeView
             return
         }
         
-        gaugeView.gaugeColor = createGaugeColor(param)
-        gaugeView.setNeedsDisplay()
-        gaugeView.percentage = param
-    }
-    
-    func createGaugeColor(param: Float) -> UIColor {
         let mininumGray = CGFloat(0.25)
         let percentage = CGFloat(param/17.0)
         let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
-        return UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
+        
+        gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
+        gaugeView.setNeedsDisplay()
+        gaugeView.percentage = param
     }
-    
     
     func drawAnchorLine() {
         
@@ -100,8 +92,8 @@ import GaugeView
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.CGPath
-        shapeLayer.strokeColor = UIColor.darkGrayColor().CGColor
-        shapeLayer.lineWidth = 1.5
+        shapeLayer.strokeColor = UIColor.brownColor().CGColor
+        shapeLayer.lineWidth = 3.0
         shapeLayer.fillColor = UIColor.clearColor().CGColor
         
         self.layer.addSublayer(shapeLayer)
