@@ -114,13 +114,6 @@
                         <constraint firstAttribute="height" constant="100" id="zu9-lh-INa"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcX-SE-Kg3">
-                    <rect key="frame" x="264" y="60" width="72" height="30"/>
-                    <state key="normal" title="TrackTime"/>
-                    <connections>
-                        <action selector="didSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="XK8-ZB-lLJ"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -140,7 +133,6 @@
                 <constraint firstItem="pj8-we-gxG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Llm-jX-EG4"/>
                 <constraint firstItem="cgr-Wy-N59" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MPY-qk-ALM"/>
                 <constraint firstItem="w92-z0-bbv" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Oti-ae-9Ce"/>
-                <constraint firstItem="lcX-SE-Kg3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="PZc-nw-DAY"/>
                 <constraint firstItem="bs8-yr-uXy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ryr-zd-rLg"/>
                 <constraint firstItem="xdl-ba-v8w" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ZMM-se-xyF"/>
                 <constraint firstItem="efh-sR-vWy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="d7T-C0-7Rn"/>
@@ -153,7 +145,6 @@
                 <constraint firstItem="xdl-ba-v8w" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nNl-90-nnb"/>
                 <constraint firstItem="jmN-Ec-YEn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="o6u-qm-JRM"/>
                 <constraint firstItem="jmN-Ec-YEn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="opn-3x-3Gm"/>
-                <constraint firstItem="lcX-SE-Kg3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="soZ-D6-7gQ"/>
                 <constraint firstItem="nA2-GJ-pC0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="vC7-Co-kQW"/>
                 <constraint firstItem="cgr-Wy-N59" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zAq-P3-EPQ"/>
             </constraints>
@@ -164,7 +155,6 @@
                 <outlet property="gaugeView4" destination="efh-sR-vWy" id="OGa-4u-QXD"/>
                 <outlet property="gaugeView5" destination="pj8-we-gxG" id="Yf3-hZ-CqN"/>
                 <outlet property="gaugeView6" destination="bs8-yr-uXy" id="0EB-Zu-5fP"/>
-                <outlet property="trackTimeButton" destination="lcX-SE-Kg3" id="naX-U5-xxD"/>
             </connections>
         </view>
     </objects>

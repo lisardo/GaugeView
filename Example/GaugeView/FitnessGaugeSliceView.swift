@@ -12,6 +12,7 @@ import GaugeView
 @IBDesignable public class FitnessGaugeSliceView: UIView {
     
     var gaugeView: GaugeView!
+    var line: CAShapeLayer!
 
     @IBInspectable public var startAngle: Float = 0.0
     @IBInspectable public var percentage: Float = 0.0 {
@@ -90,24 +91,47 @@ import GaugeView
         path.moveToPoint(p1)
         path.addLineToPoint(p2)
         
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.CGPath
-        shapeLayer.strokeColor = UIColor.grayColor().CGColor
-        shapeLayer.lineWidth = 1.5
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        line = CAShapeLayer()
+        line.path = path.CGPath
+        line.strokeColor = UIColor.grayColor().CGColor
+        line.lineWidth = 1.5
+        line.fillColor = UIColor.clearColor().CGColor
         
-        self.layer.addSublayer(shapeLayer)
+        self.layer.addSublayer(line)
         
     }
     
+    
+    
     func pointBelongsTo(point: CGPoint) -> Bool {
-        return self.startAngle == 0.0
+        let startAngle = CGFloat(self.startAngle.degreesToRadians)
+        let endAngle = CGFloat((self.startAngle + 60.0).degreesToRadians)
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        let normalizedPoint = CGPointMake(point.x - center.x , point.y - center.y )
+        var pointAngle = -atan2(normalizedPoint.x, normalizedPoint.y)+CGFloat(M_PI_2)
+
+        if (pointAngle < 0) {
+            pointAngle += CGFloat(M_PI*2.0)
+        }
+        print(endAngle)
+        print(startAngle)
+        print(pointAngle)
+        
+        return (startAngle < pointAngle) && (endAngle > pointAngle)
     }
     
     func didSelect() {
+        line.strokeColor = UIColor.redColor().CGColor
         self.gaugeView.gaugeColor = UIColor.redColor()
         self.gaugeView.setNeedsDisplay()
         self.gaugeView.percentage += 0.001
+    }
+    
+    func didUnselect() {
+        line.strokeColor = UIColor.grayColor().CGColor
+        self.gaugeView.gaugeColor = UIColor.grayColor()
+        self.gaugeView.setNeedsDisplay()
+        self.gaugeView.percentage -= 0.001
     }
 }
 

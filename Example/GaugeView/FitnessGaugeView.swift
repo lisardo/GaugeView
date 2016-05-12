@@ -48,6 +48,8 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
         for gauge in self.metrics() {
             if (gauge.pointBelongsTo(point!)) {
                 gauge.didSelect()
+            } else {
+                gauge.didUnselect()
             }
         }
     }
