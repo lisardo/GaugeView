@@ -12,6 +12,7 @@ import GaugeView
 @IBDesignable public class FitnessGaugeSliceView: UIView {
     
     var gaugeView: GaugeView!
+
     @IBInspectable public var startAngle: Float = 0.0
     @IBInspectable public var percentage: Float = 0.0 {
         didSet {
@@ -97,7 +98,16 @@ import GaugeView
         
         self.layer.addSublayer(shapeLayer)
         
-        
+    }
+    
+    func pointBelongsTo(point: CGPoint) -> Bool {
+        return self.startAngle == 0.0
+    }
+    
+    func didSelect() {
+        self.gaugeView.gaugeColor = UIColor.redColor()
+        self.gaugeView.setNeedsDisplay()
+        self.gaugeView.percentage += 0.001
     }
 }
 

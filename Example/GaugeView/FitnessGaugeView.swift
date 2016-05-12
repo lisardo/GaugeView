@@ -2,7 +2,7 @@ import UIKit
 import GaugeView
 
 @IBDesignable
-class FitnessGaugeView: UIView {
+class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var gaugeView1: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView2: FitnessGaugeSliceView!
@@ -28,9 +28,30 @@ class FitnessGaugeView: UIView {
         viewFromNib.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
+        setup(viewFromNib)
         return viewFromNib
         
     }
+
+    
+    func setup(view: FitnessGaugeView) {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(FitnessGaugeView.handleTap(_:)))
+        tap.delegate = view
+        view.addGestureRecognizer(tap)
+        
+
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        let point = sender?.locationInView(self)
+        print(sender?.locationInView(self))
+        for gauge in self.metrics() {
+            if (gauge.pointBelongsTo(point!)) {
+                gauge.didSelect()
+            }
+        }
+    }
+    
     
     private func setupFitnessMetrics(view: FitnessGaugeView) {
         for metricDisplay in view.metrics() {
