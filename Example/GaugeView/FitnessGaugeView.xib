@@ -11,34 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgr-Wy-N59" userLabel="Metric text">
-                    <rect key="frame" x="245" y="250" width="110" height="100"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29:43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmK-Nm-494" userLabel="Metric number">
-                            <rect key="frame" x="0.0" y="21" width="110" height="48"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
-                            <color key="textColor" red="0.72941176470588232" green="0.11764705882352941" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIT ASSESS TIME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sp-iY-uy3" userLabel="Metric name">
-                            <rect key="frame" x="-2" y="69" width="113" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="3sp-iY-uy3" firstAttribute="top" secondItem="pmK-Nm-494" secondAttribute="bottom" id="49F-Rj-bl9"/>
-                        <constraint firstAttribute="trailing" secondItem="pmK-Nm-494" secondAttribute="trailing" id="COC-fa-wdg"/>
-                        <constraint firstItem="pmK-Nm-494" firstAttribute="top" secondItem="cgr-Wy-N59" secondAttribute="top" constant="21" id="Hhf-53-tyq"/>
-                        <constraint firstAttribute="width" constant="110" id="MTq-26-4OE"/>
-                        <constraint firstItem="3sp-iY-uy3" firstAttribute="centerX" secondItem="cgr-Wy-N59" secondAttribute="centerX" id="Uy0-To-y4o"/>
-                        <constraint firstItem="pmK-Nm-494" firstAttribute="leading" secondItem="cgr-Wy-N59" secondAttribute="leading" id="fab-S6-tzd"/>
-                        <constraint firstItem="pmK-Nm-494" firstAttribute="centerX" secondItem="cgr-Wy-N59" secondAttribute="centerX" id="iT6-tH-u9d"/>
-                        <constraint firstAttribute="height" constant="100" id="zu9-lh-INa"/>
-                    </constraints>
-                </view>
                 <view multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w92-z0-bbv" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="1" green="0.72278066860000001" blue="0.26553758669999999" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -111,6 +83,37 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RadialGradientAlpha" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-GJ-pC0">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgr-Wy-N59" userLabel="Metric text">
+                    <rect key="frame" x="245" y="250" width="110" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29:43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmK-Nm-494" userLabel="Metric number">
+                            <rect key="frame" x="0.0" y="21" width="110" height="48"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                            <color key="textColor" red="0.72941176470588232" green="0.11764705882352941" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIT ASSESS TIME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sp-iY-uy3" userLabel="Metric name">
+                            <rect key="frame" x="-2" y="69" width="113" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3sp-iY-uy3" firstAttribute="top" secondItem="pmK-Nm-494" secondAttribute="bottom" id="49F-Rj-bl9"/>
+                        <constraint firstAttribute="trailing" secondItem="pmK-Nm-494" secondAttribute="trailing" id="COC-fa-wdg"/>
+                        <constraint firstItem="pmK-Nm-494" firstAttribute="top" secondItem="cgr-Wy-N59" secondAttribute="top" constant="21" id="Hhf-53-tyq"/>
+                        <constraint firstAttribute="width" constant="110" id="MTq-26-4OE"/>
+                        <constraint firstItem="3sp-iY-uy3" firstAttribute="centerX" secondItem="cgr-Wy-N59" secondAttribute="centerX" id="Uy0-To-y4o"/>
+                        <constraint firstItem="pmK-Nm-494" firstAttribute="leading" secondItem="cgr-Wy-N59" secondAttribute="leading" id="fab-S6-tzd"/>
+                        <constraint firstItem="pmK-Nm-494" firstAttribute="centerX" secondItem="cgr-Wy-N59" secondAttribute="centerX" id="iT6-tH-u9d"/>
+                        <constraint firstAttribute="height" constant="100" id="zu9-lh-INa"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcX-SE-Kg3">
                     <rect key="frame" x="264" y="60" width="72" height="30"/>
                     <state key="normal" title="TrackTime"/>
@@ -132,6 +135,8 @@
                 <constraint firstItem="xdl-ba-v8w" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JCW-Bz-t6T"/>
                 <constraint firstItem="pj8-we-gxG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JQW-C3-ezF"/>
                 <constraint firstItem="w92-z0-bbv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="K3a-AV-RSM"/>
+                <constraint firstItem="nA2-GJ-pC0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KAR-cZ-A7c"/>
+                <constraint firstItem="nA2-GJ-pC0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LaL-eJ-gNl"/>
                 <constraint firstItem="pj8-we-gxG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Llm-jX-EG4"/>
                 <constraint firstItem="cgr-Wy-N59" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MPY-qk-ALM"/>
                 <constraint firstItem="w92-z0-bbv" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Oti-ae-9Ce"/>
@@ -140,6 +145,7 @@
                 <constraint firstItem="xdl-ba-v8w" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ZMM-se-xyF"/>
                 <constraint firstItem="efh-sR-vWy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="d7T-C0-7Rn"/>
                 <constraint firstItem="jmN-Ec-YEn" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="e46-QC-0Zc"/>
+                <constraint firstItem="nA2-GJ-pC0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="eY7-nT-d6y"/>
                 <constraint firstItem="xdl-ba-v8w" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="hpR-qG-5Xh"/>
                 <constraint firstItem="w92-z0-bbv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="mcD-x4-96Z"/>
                 <constraint firstItem="pj8-we-gxG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mh3-aI-u4p"/>
@@ -148,6 +154,7 @@
                 <constraint firstItem="jmN-Ec-YEn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="o6u-qm-JRM"/>
                 <constraint firstItem="jmN-Ec-YEn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="opn-3x-3Gm"/>
                 <constraint firstItem="lcX-SE-Kg3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="soZ-D6-7gQ"/>
+                <constraint firstItem="nA2-GJ-pC0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="vC7-Co-kQW"/>
                 <constraint firstItem="cgr-Wy-N59" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zAq-P3-EPQ"/>
             </constraints>
             <connections>
@@ -161,4 +168,7 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="RadialGradientAlpha" width="360" height="360"/>
+    </resources>
 </document>

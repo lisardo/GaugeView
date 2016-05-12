@@ -42,19 +42,18 @@ import GaugeView
     }
     
     func setup() {
-        print(self.frame)
-        print(self.bounds)
+        drawAnchorLine()
+        
         gaugeView = GaugeView(frame: self.frame)
         gaugeView.thickness = 12.0
         gaugeView.gaugeBackgroundColor = UIColor.clearColor()
         gaugeView.gaugeColor = UIColor.darkGrayColor()
         gaugeView.startAngle = self.startAngle
         gaugeView.percentage = percentage
-        
-        self.addSubview(gaugeView!)
         gaugeView.sizeToFit()
+        self.addSubview(gaugeView!)
         
-        drawAnchorLine()
+        
     }
     
     func setupFitnessParams(param: Float) {
@@ -92,8 +91,8 @@ import GaugeView
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.CGPath
-        shapeLayer.strokeColor = UIColor.brownColor().CGColor
-        shapeLayer.lineWidth = 3.0
+        shapeLayer.strokeColor = UIColor.grayColor().CGColor
+        shapeLayer.lineWidth = 1.5
         shapeLayer.fillColor = UIColor.clearColor().CGColor
         
         self.layer.addSublayer(shapeLayer)

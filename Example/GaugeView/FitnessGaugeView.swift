@@ -16,13 +16,6 @@ class FitnessGaugeView: UIView {
     var flag = false
     
     @IBAction func didSelect(sender: UIButton) {
-        _ = flag ? UIColor.lightGrayColor(): UIColor.redColor()
-        flag = !flag
-        if sender == trackTimeButton {
-//            self.gaugeView5.gaugeColor = color
-            self.gaugeView5.setNeedsDisplay()
-            self.gaugeView5.percentage += 0.01
-        }
     }
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
@@ -35,7 +28,6 @@ class FitnessGaugeView: UIView {
         viewFromNib.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
-//        setupFitnessMetrics(viewFromNib)
         return viewFromNib
         
     }
@@ -50,7 +42,7 @@ class FitnessGaugeView: UIView {
     func setupFitnessMetrics() {
         setupFitnessMetrics(self)
     }
-//    
+
     func metrics() -> [FitnessGaugeSliceView] {
         return [gaugeView1, gaugeView2, gaugeView3, gaugeView4, gaugeView5, gaugeView6]
     }
