@@ -14,6 +14,7 @@ import GaugeView
     var gaugeView: GaugeView!
     var startLine = CAShapeLayer()
     var finishLine = CAShapeLayer()
+    var imageView: UIImageView!
     var selected = false
     
     var metric: MetricEnum!
@@ -50,6 +51,8 @@ import GaugeView
     func setup() {
         drawAnchorLines()
         setupGaugeView()
+        setupImage()
+        superview?.bringSubviewToFront(self)
     }
     
     func drawAnchorLines() {
@@ -94,20 +97,40 @@ import GaugeView
         self.addSubview(gaugeView!)
     }
     
+    func setupImage() {
+        imageView = UIImageView(image: UIImage(named: "heck"))
+        imageView.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        let angle = startAngle + 30.0
+        
+        let deltax = CGFloat(cos(angle.degreesToRadians)*130.0)
+        let deltay = CGFloat(sin(angle.degreesToRadians)*130.0)
+        
+        imageView.center = CGPoint(x: center.x - deltax, y: center.y - deltay)
+        
+        addSubview(imageView)
+
+    }
+    
     func setupFitnessParams(param: Float) {
         guard gaugeView != nil else {
             return
         }
         if !selected {
-            let mininumGray = CGFloat(0.25)
-            let percentage = CGFloat(param/17.0)
-            let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
-            
-            gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
+            paintGaugeGray(param)
         }
         
         gaugeView.setNeedsDisplay()
         gaugeView.percentage = param
+    }
+    
+    func paintGaugeGray(value: Float) {
+        let mininumGray = CGFloat(0.25)
+        let percentage = CGFloat(value/17.0)
+        let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
+        
+        gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
     }
     
     func pointBelongsTo(point: CGPoint) -> Bool {
@@ -129,10 +152,10 @@ import GaugeView
             selected = true
             startLine.strokeColor = UIColor.redColor().CGColor
             finishLine.strokeColor = UIColor.redColor().CGColor
-            superview?.bringSubviewToFront(self)
             self.gaugeView.gaugeColor = UIColor.redColor()
             self.gaugeView.setNeedsDisplay()
             self.gaugeView.percentage += 0.001
+            superview?.bringSubviewToFront(self)
         }
     }
     
@@ -151,5 +174,4 @@ import GaugeView
 extension Float {
     var doubleValue:      Double { return Double(self) }
     var degreesToRadians: Float  { return Float(doubleValue * M_PI / 180) }
-    
 }

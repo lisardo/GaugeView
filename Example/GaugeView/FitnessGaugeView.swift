@@ -4,6 +4,7 @@ import GaugeView
 @IBDesignable
 class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var gaugeBackground: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView1: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView2: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView3: FitnessGaugeSliceView!
@@ -100,4 +101,8 @@ extension UIView {
 
 protocol FitnessGaugeDelegate: class {
     func didSelectMetric(metric: MetricEnum)
+}
+
+protocol FitnessGaugeDataSource: class {
+    func valueForSection(metric: MetricEnum) -> Float
 }
