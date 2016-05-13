@@ -98,12 +98,14 @@ import GaugeView
         guard gaugeView != nil else {
             return
         }
+        if !selected {
+            let mininumGray = CGFloat(0.25)
+            let percentage = CGFloat(param/17.0)
+            let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
+            
+            gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
+        }
         
-        let mininumGray = CGFloat(0.25)
-        let percentage = CGFloat(param/17.0)
-        let grayPercentage = CGFloat(1.0 - (percentage*0.5 + mininumGray))
-        
-        gaugeView.gaugeColor = UIColor(red: grayPercentage, green: grayPercentage, blue: grayPercentage+0.01, alpha: 1.0)
         gaugeView.setNeedsDisplay()
         gaugeView.percentage = param
     }
