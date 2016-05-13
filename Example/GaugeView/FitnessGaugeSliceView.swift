@@ -12,7 +12,8 @@ import GaugeView
 @IBDesignable public class FitnessGaugeSliceView: UIView {
     
     var gaugeView: GaugeView!
-    var line: CAShapeLayer!
+    var startLine: CAShapeLayer = CAShapeLayer()
+    var finishLine: CAShapeLayer = CAShapeLayer()
 
     @IBInspectable public var startAngle: Float = 0.0
     @IBInspectable public var percentage: Float = 0.0 {
@@ -25,7 +26,7 @@ import GaugeView
     
     internal override init(frame: CGRect) {
         super.init(frame: frame)
-        drawAnchorLine()
+        drawAnchorLines()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -44,8 +45,71 @@ import GaugeView
     }
     
     func setup() {
-        drawAnchorLine()
+        drawAnchorLines()
+        setupGaugeView()
+    }
+    
+//    func drawAnchorLine() {
+//        
+//        let path = UIBezierPath()
+//        
+//        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+//        
+//        let length: Float = Float(self.frame.width)/2.0
+//        
+//        var deltax = CGFloat(cos(self.startAngle.degreesToRadians)*100.0)
+//        var deltay = CGFloat(sin(self.startAngle.degreesToRadians)*100.0)
+//        let p1 = CGPointMake(center.x + deltax, center.y + deltay)
+//        
+//        deltax = CGFloat(cos(self.startAngle.degreesToRadians)*length )
+//        deltay = CGFloat(sin(self.startAngle.degreesToRadians)*length )
+//        let p2 = CGPointMake(center.x + deltax, center.y + deltay)
+//        
+//        path.moveToPoint(p1)
+//        path.addLineToPoint(p2)
+//        
+//        line = CAShapeLayer()
+//        line.path = path.CGPath
+//        line.strokeColor = UIColor.grayColor().CGColor
+//        line.lineWidth = 1.5
+//        line.fillColor = UIColor.clearColor().CGColor
+//        
+//        self.layer.addSublayer(line)
+//        
+//    }
+    
+    func drawAnchorLines() {
+        drawLine(startAngle, line: startLine)
+        drawLine(startAngle + 60.0, line: finishLine)
+    }
+    
+    func drawLine(angle: Float, line: CAShapeLayer) {
+        let path = UIBezierPath()
         
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        
+        let length: Float = Float(self.frame.width)/2.0
+        
+        var deltax = CGFloat(cos(angle.degreesToRadians)*100.0)
+        var deltay = CGFloat(sin(angle.degreesToRadians)*100.0)
+        let p1 = CGPointMake(center.x + deltax, center.y + deltay)
+        
+        deltax = CGFloat(cos(angle.degreesToRadians)*length )
+        deltay = CGFloat(sin(angle.degreesToRadians)*length )
+        let p2 = CGPointMake(center.x + deltax, center.y + deltay)
+        
+        path.moveToPoint(p1)
+        path.addLineToPoint(p2)
+        
+        line.path = path.CGPath
+        line.strokeColor = UIColor.grayColor().CGColor
+        line.lineWidth = 1.5
+        line.fillColor = UIColor.clearColor().CGColor
+        
+        self.layer.addSublayer(line)
+    }
+    
+    func setupGaugeView() {
         gaugeView = GaugeView(frame: self.frame)
         gaugeView.thickness = 12.0
         gaugeView.gaugeBackgroundColor = UIColor.clearColor()
@@ -54,8 +118,6 @@ import GaugeView
         gaugeView.percentage = percentage
         gaugeView.sizeToFit()
         self.addSubview(gaugeView!)
-        
-        
     }
     
     func setupFitnessParams(param: Float) {
@@ -71,37 +133,6 @@ import GaugeView
         gaugeView.setNeedsDisplay()
         gaugeView.percentage = param
     }
-    
-    func drawAnchorLine() {
-        
-        let path = UIBezierPath()
-        
-        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-
-        let length: Float = Float(self.frame.width)/2.0
-        
-        var deltax = CGFloat(cos(self.startAngle.degreesToRadians)*100.0)
-        var deltay = CGFloat(sin(self.startAngle.degreesToRadians)*100.0)
-        let p1 = CGPointMake(center.x + deltax, center.y + deltay)
-        
-        deltax = CGFloat(cos(self.startAngle.degreesToRadians)*length )
-        deltay = CGFloat(sin(self.startAngle.degreesToRadians)*length )
-        let p2 = CGPointMake(center.x + deltax, center.y + deltay)
-        
-        path.moveToPoint(p1)
-        path.addLineToPoint(p2)
-        
-        line = CAShapeLayer()
-        line.path = path.CGPath
-        line.strokeColor = UIColor.grayColor().CGColor
-        line.lineWidth = 1.5
-        line.fillColor = UIColor.clearColor().CGColor
-        
-        self.layer.addSublayer(line)
-        
-    }
-    
-    
     
     func pointBelongsTo(point: CGPoint) -> Bool {
         let startAngle = CGFloat(self.startAngle.degreesToRadians)
@@ -121,14 +152,17 @@ import GaugeView
     }
     
     func didSelect() {
-        line.strokeColor = UIColor.redColor().CGColor
+        startLine.strokeColor = UIColor.redColor().CGColor
+        finishLine.strokeColor = UIColor.redColor().CGColor
+        superview?.bringSubviewToFront(self)
         self.gaugeView.gaugeColor = UIColor.redColor()
         self.gaugeView.setNeedsDisplay()
         self.gaugeView.percentage += 0.001
     }
     
     func didUnselect() {
-        line.strokeColor = UIColor.grayColor().CGColor
+        startLine.strokeColor = UIColor.grayColor().CGColor
+        finishLine.strokeColor = UIColor.grayColor().CGColor
         self.gaugeView.gaugeColor = UIColor.grayColor()
         self.gaugeView.setNeedsDisplay()
         self.gaugeView.percentage -= 0.001
