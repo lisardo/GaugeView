@@ -5,29 +5,26 @@ import GaugeView
     
     var startLine = CAShapeLayer()
     var finishLine = CAShapeLayer()
-    var gaugeView: GaugeView!
+    var gaugeView = GaugeView()
     var imageView: UIImageView!
     var selected = false
     var metric: MetricEnum!
-
+    
     @IBInspectable public var startAngle: Float = 0.0
+    @IBInspectable public var image: UIImage = UIImage(named: "heck")!
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupGaugeView()
-        setupImage()
-    }
-    
-    func setupGaugeView() {
-        gaugeView = GaugeView(frame: frame)
         addSubview(gaugeView)
+        setupImage()
+        drawAnchorLines()
     }
     
-    func setupImage() {
-        imageView = UIImageView(image: UIImage(named: "heck"))
+    private func setupImage() {
+        imageView = UIImageView(image: image)
         addSubview(imageView)
     }
-
+    
     override public func layoutSubviews() {
         super.layoutSubviews()
         setup()
@@ -40,16 +37,48 @@ import GaugeView
         superview?.bringSubviewToFront(self)
     }
     
-    func updateGauge() {
+    func setupFitnessParams(param: Float) {
+        gaugeView.percentage = param
+        if !selected {
+            setGaugeColor(progressColor())
+        }
+    }
+    
+    func contains(point: CGPoint) -> Bool {
+        let startAngle = CGFloat(self.startAngle.degreesToRadians)
+        let endAngle = CGFloat((self.startAngle + 60.0).degreesToRadians)
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        let normalizedPoint = CGPointMake(point.x - center.x , point.y - center.y )
+        var pointAngle = -atan2(normalizedPoint.x, normalizedPoint.y)+CGFloat(M_PI_2)
+        
+        if (pointAngle < 0) {
+            pointAngle += CGFloat(M_PI*2.0)
+        }
+        
+        return (startAngle < pointAngle) && (endAngle > pointAngle)
+    }
+    
+    func didSelect() {
+        selected = true
+        setDelimiterLinesStrokeColor(UIColor.redColor().CGColor)
+        setGaugeColor(UIColor.redColor())
+        superview?.bringSubviewToFront(self)
+    }
+    
+    func didUnselect() {
+        selected = false
+        setDelimiterLinesStrokeColor(UIColor.grayColor().CGColor)
+        setGaugeColor(progressColor())
+    }
+    
+    private func updateGauge() {
         gaugeView.frame = frame
-        gaugeView.sizeToFit()
         gaugeView.thickness = 12.0
         gaugeView.gaugeBackgroundColor = UIColor.clearColor()
-        gaugeView.gaugeColor = UIColor.darkGrayColor()
         gaugeView.startAngle = startAngle
     }
     
-    func updateImage() {
+    private func updateImage() {
         imageView.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         
         let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
@@ -61,12 +90,12 @@ import GaugeView
         imageView.center = CGPoint(x: center.x - deltax, y: center.y - deltay)
     }
     
-    func drawAnchorLines() {
+    private func drawAnchorLines() {
         drawLine(startAngle, line: startLine)
         drawLine(startAngle + 60.0, line: finishLine)
     }
     
-    func drawLine(angle: Float, line: CAShapeLayer) {
+    private func drawLine(angle: Float, line: CAShapeLayer) {
         let path = UIBezierPath()
         
         let length: Float = Float(self.frame.width)/2.0
@@ -90,49 +119,12 @@ import GaugeView
         self.layer.addSublayer(line)
     }
     
-    func setupFitnessParams(param: Float) {
-        gaugeView.percentage = param
-        if !selected {
-            paintGaugeGray(param)
-        }
-    }
-    
-    func paintGaugeGray(value: Float) {
+    private func progressColor() -> UIColor {
         let mininumGray = CGFloat(0.25)
-        let percentage = CGFloat(value/17.0)
+        let percentage = CGFloat(gaugeView.percentage/17.0)
+        print(percentage)
         let grayPercentage = CGFloat(1.0 - (percentage * 0.5 + mininumGray))
-        setGaugeColor(UIColor(red:grayPercentage, green:grayPercentage, blue:grayPercentage + 0.01, alpha: 1.0))
-    }
-    
-    func pointBelongsTo(point: CGPoint) -> Bool {
-        let startAngle = CGFloat(self.startAngle.degreesToRadians)
-        let endAngle = CGFloat((self.startAngle + 60.0).degreesToRadians)
-        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-        let normalizedPoint = CGPointMake(point.x - center.x , point.y - center.y )
-        var pointAngle = -atan2(normalizedPoint.x, normalizedPoint.y)+CGFloat(M_PI_2)
-
-        if (pointAngle < 0) {
-            pointAngle += CGFloat(M_PI*2.0)
-        }
-        
-        return (startAngle < pointAngle) && (endAngle > pointAngle)
-    }
-    
-    func didSelect() {
-        if !selected {
-            selected = true
-            setDelimiterLinesStrokeColor(UIColor.redColor().CGColor)
-            setGaugeColor(UIColor.redColor())
-            superview?.bringSubviewToFront(self)
-        }
-    }
-    
-    func didUnselect() {
-        if selected {
-            selected = false
-            setDelimiterLinesStrokeColor(UIColor.grayColor().CGColor)
-            setGaugeColor(UIColor.grayColor())
-        }
+        return UIColor(red:grayPercentage, green:grayPercentage, blue:grayPercentage + 0.01, alpha: 1.0)
     }
     
     private func setDelimiterLinesStrokeColor(color: CGColor) {
@@ -142,7 +134,7 @@ import GaugeView
     
     private func setGaugeColor(color: UIColor) {
         gaugeView.gaugeColor = color
-        gaugeView.percentage -= 0.001
+        gaugeView.percentage += 0.001
         gaugeView.setNeedsDisplay()
     }
 }

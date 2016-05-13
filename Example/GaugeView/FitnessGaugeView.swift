@@ -53,18 +53,22 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
         view.gaugeView6.metric = MetricEnum.Weight
     }
     
-    func handleTap(sender: UITapGestureRecognizer? = nil) {
-        let point = sender?.locationInView(self)
-        for metricView in gaugeViews {
-            if (metricView.pointBelongsTo(point!)) {
-                delegate?.fitnessGaugeDidSelectMetric(metricView.metric)
-                metricView.didSelect()
-                centerTitle.text = metricView.metric.rawValue
-                centerValue.text = "\(metricView.gaugeView!.percentage)"
+    func handleTap(sender: UITapGestureRecognizer?) {
+        guard let point = sender?.locationInView(self) else {
+            return
+        }
+        
+        gaugeViews.forEach { (view) in
+            if (view.contains(point)) {
+                view.didSelect()
+                centerTitle.text = view.metric.rawValue
+                centerValue.text = "\(view.gaugeView.percentage)"
             } else {
-                metricView.didUnselect()
+                view.didUnselect()
             }
         }
+        
+        
     }
     
     func setupFitnessMetrics() {

@@ -14,67 +14,55 @@
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w92-z0-bbv" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-Ec-YEn" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="60"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-ba-v8w" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="120"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efh-sR-vWy" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="180"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-we-gxG" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="240"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bs8-yr-uXy" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="-1" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="300"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RadialGradientAlpha" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-GJ-pC0">
@@ -144,22 +132,23 @@
             <connections>
                 <outlet property="centerTitle" destination="3sp-iY-uy3" id="Efq-vP-K61"/>
                 <outlet property="centerValue" destination="pmK-Nm-494" id="PiL-aV-Z9E"/>
-                <outlet property="gaugeView1" destination="w92-z0-bbv" id="cQn-BI-mKX"/>
-                <outlet property="gaugeView2" destination="jmN-Ec-YEn" id="bll-JW-hDz"/>
-                <outlet property="gaugeView3" destination="xdl-ba-v8w" id="pb8-jF-qfb"/>
-                <outlet property="gaugeView4" destination="efh-sR-vWy" id="OGa-4u-QXD"/>
-                <outlet property="gaugeView5" destination="pj8-we-gxG" id="Yf3-hZ-CqN"/>
-                <outlet property="gaugeView6" destination="bs8-yr-uXy" id="0EB-Zu-5fP"/>
+                <outlet property="gaugeView1" destination="w92-z0-bbv" id="hmn-f8-Kml"/>
+                <outlet property="gaugeView2" destination="jmN-Ec-YEn" id="bt0-0p-rgx"/>
+                <outlet property="gaugeView3" destination="xdl-ba-v8w" id="P0L-Tc-DNS"/>
+                <outlet property="gaugeView4" destination="efh-sR-vWy" id="R1e-EQ-qGK"/>
+                <outlet property="gaugeView5" destination="pj8-we-gxG" id="c5X-ns-xHB"/>
+                <outlet property="gaugeView6" destination="bs8-yr-uXy" id="sR3-dp-j7m"/>
                 <outletCollection property="gaugeViews" destination="efh-sR-vWy" collectionClass="NSMutableArray" id="MMj-fV-dHp"/>
-                <outletCollection property="gaugeViews" destination="pj8-we-gxG" id="TsR-oe-M59"/>
-                <outletCollection property="gaugeViews" destination="bs8-yr-uXy" id="McA-hC-qmJ"/>
-                <outletCollection property="gaugeViews" destination="xdl-ba-v8w" id="ctZ-7v-m1Y"/>
-                <outletCollection property="gaugeViews" destination="jmN-Ec-YEn" id="j0j-kc-YxV"/>
-                <outletCollection property="gaugeViews" destination="w92-z0-bbv" id="gRu-kt-U7O"/>
+                <outletCollection property="gaugeViews" destination="pj8-we-gxG" collectionClass="NSMutableArray" id="TsR-oe-M59"/>
+                <outletCollection property="gaugeViews" destination="bs8-yr-uXy" collectionClass="NSMutableArray" id="McA-hC-qmJ"/>
+                <outletCollection property="gaugeViews" destination="xdl-ba-v8w" collectionClass="NSMutableArray" id="ctZ-7v-m1Y"/>
+                <outletCollection property="gaugeViews" destination="jmN-Ec-YEn" collectionClass="NSMutableArray" id="j0j-kc-YxV"/>
+                <outletCollection property="gaugeViews" destination="w92-z0-bbv" collectionClass="NSMutableArray" id="gRu-kt-U7O"/>
             </connections>
         </view>
     </objects>
     <resources>
         <image name="RadialGradientAlpha" width="360" height="360"/>
+        <image name="heck" width="438" height="434"/>
     </resources>
 </document>
