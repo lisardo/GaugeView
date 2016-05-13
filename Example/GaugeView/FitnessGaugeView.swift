@@ -4,7 +4,6 @@ import GaugeView
 @IBDesignable
 class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var gaugeBackground: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView1: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView2: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView3: FitnessGaugeSliceView!
@@ -12,36 +11,40 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var gaugeView5: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView6: FitnessGaugeSliceView!
     
+    @IBOutlet var gaugeViews: [FitnessGaugeSliceView]!
+    
     @IBOutlet weak var centerValue: UILabel!
     @IBOutlet weak var centerTitle: UILabel!
     
-    var flag = false
     weak var delegate: FitnessGaugeDelegate?
+    weak var dataSource: FitnessGaugeDataSource? {
+        didSet {
+            setupFitnessMetrics()
+        }
+    }
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if tag == 10 {
             return self
         }
-        
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let viewFromNib = bundle.loadNibNamed("FitnessGaugeView", owner: nil, options: nil)[0] as! FitnessGaugeView
+    
+        let viewFromNib = NSBundle(forClass: self.dynamicType).loadNibNamed("FitnessGaugeView", owner: nil, options: nil)[0] as! FitnessGaugeView
         viewFromNib.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
-        setup(viewFromNib)
-        setupMetrics(viewFromNib)
+        setupTapGesture(viewFromNib)
+        setupMetricViews(viewFromNib)
         return viewFromNib
-        
     }
 
     
-    func setup(view: FitnessGaugeView) {
+    func setupTapGesture(view: FitnessGaugeView) {
         let tap = UITapGestureRecognizer(target: view, action: #selector(FitnessGaugeView.handleTap(_:)))
         tap.delegate = view
         view.addGestureRecognizer(tap)
     }
     
-    func setupMetrics(view: FitnessGaugeView) {
+    func setupMetricViews(view: FitnessGaugeView) {
         view.gaugeView1.metric = MetricEnum.BodyMass
         view.gaugeView2.metric = MetricEnum.CGBold
         view.gaugeView3.metric = MetricEnum.CheckIns
@@ -52,33 +55,22 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {
         let point = sender?.locationInView(self)
-        for gauge in self.metrics() {
-            if (gauge.pointBelongsTo(point!)) {
-                delegate?.didSelectMetric(gauge.metric)
-                gauge.didSelect()
-                centerTitle.text = gauge.metric.rawValue
-                centerValue.text = "\(gauge.gaugeView.percentage)"
+        for metricView in gaugeViews {
+            if (metricView.pointBelongsTo(point!)) {
+                delegate?.fitnessGaugeDidSelectMetric(metricView.metric)
+                metricView.didSelect()
+                centerTitle.text = metricView.metric.rawValue
+                centerValue.text = "\(metricView.gaugeView!.percentage)"
             } else {
-                gauge.didUnselect()
+                metricView.didUnselect()
             }
         }
     }
     
-    
-    private func setupFitnessMetrics(view: FitnessGaugeView) {
-        for metricDisplay in view.metrics() {
-            let randomValue = arc4random_uniform(17)
-            metricDisplay.setupFitnessParams(Float(randomValue))
-        }
-    }
-    
     func setupFitnessMetrics() {
-        setupFitnessMetrics(self)
-    }
-    
-
-    func metrics() -> [FitnessGaugeSliceView] {
-        return [gaugeView1, gaugeView2, gaugeView3, gaugeView4, gaugeView5, gaugeView6]
+        gaugeViews.forEach { (view) in
+            view.setupFitnessParams(Float(arc4random_uniform(17)))
+        }
     }
 }
 
@@ -100,9 +92,9 @@ extension UIView {
 }
 
 protocol FitnessGaugeDelegate: class {
-    func didSelectMetric(metric: MetricEnum)
+    func fitnessGaugeDidSelectMetric(metric: MetricEnum)
 }
 
 protocol FitnessGaugeDataSource: class {
-    func valueForSection(metric: MetricEnum) -> Float
+    func fitnessGaugeValueForSection(metric: MetricEnum) -> Float
 }

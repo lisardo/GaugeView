@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w92-z0-bbv" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w92-z0-bbv" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="percentage">
@@ -150,6 +150,12 @@
                 <outlet property="gaugeView4" destination="efh-sR-vWy" id="OGa-4u-QXD"/>
                 <outlet property="gaugeView5" destination="pj8-we-gxG" id="Yf3-hZ-CqN"/>
                 <outlet property="gaugeView6" destination="bs8-yr-uXy" id="0EB-Zu-5fP"/>
+                <outletCollection property="gaugeViews" destination="efh-sR-vWy" collectionClass="NSMutableArray" id="MMj-fV-dHp"/>
+                <outletCollection property="gaugeViews" destination="pj8-we-gxG" id="TsR-oe-M59"/>
+                <outletCollection property="gaugeViews" destination="bs8-yr-uXy" id="McA-hC-qmJ"/>
+                <outletCollection property="gaugeViews" destination="xdl-ba-v8w" id="ctZ-7v-m1Y"/>
+                <outletCollection property="gaugeViews" destination="jmN-Ec-YEn" id="j0j-kc-YxV"/>
+                <outletCollection property="gaugeViews" destination="w92-z0-bbv" id="gRu-kt-U7O"/>
             </connections>
         </view>
     </objects>

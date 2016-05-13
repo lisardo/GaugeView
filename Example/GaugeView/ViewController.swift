@@ -9,18 +9,23 @@
 import UIKit
 import GaugeView
 
-class ViewController: UIViewController, FitnessGaugeDelegate {
+class ViewController: UIViewController, FitnessGaugeDelegate, FitnessGaugeDataSource {
     
     @IBOutlet weak var fitnessGaugeView: FitnessGaugeView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fitnessGaugeView.delegate = self
+        fitnessGaugeView.dataSource = self
         
     }
     
-    func didSelectMetric(metric: MetricEnum) {
+    func fitnessGaugeDidSelectMetric(metric: MetricEnum) {
         print("metric selected: \(metric)")
+    }
+    
+    func fitnessGaugeValueForSection(metric: MetricEnum) -> Float {
+        return 10
     }
     
     @IBAction func didPressOnButton(sender: AnyObject) {
