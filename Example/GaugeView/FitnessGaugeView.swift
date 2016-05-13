@@ -11,12 +11,8 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var gaugeView5: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView6: FitnessGaugeSliceView!
     
-    @IBOutlet weak var trackTimeButton: UIButton!
-    
     var flag = false
-    
-    @IBAction func didSelect(sender: UIButton) {
-    }
+    weak var delegate: FitnessGaugeDelegate?
     
     override func awakeAfterUsingCoder(aDecoder: NSCoder) -> AnyObject? {
         if tag == 10 {
@@ -29,6 +25,7 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
         viewFromNib.autoresizingMask = autoresizingMask
         cloneConstraints(viewFromNib)
         setup(viewFromNib)
+        setupMetrics(viewFromNib)
         return viewFromNib
         
     }
@@ -38,15 +35,22 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
         let tap = UITapGestureRecognizer(target: view, action: #selector(FitnessGaugeView.handleTap(_:)))
         tap.delegate = view
         view.addGestureRecognizer(tap)
-        
-
+    }
+    
+    func setupMetrics(view: FitnessGaugeView) {
+        view.gaugeView1.metric = MetricEnum.BodyMass
+        view.gaugeView2.metric = MetricEnum.CGBold
+        view.gaugeView3.metric = MetricEnum.CheckIns
+        view.gaugeView4.metric = MetricEnum.Strenght
+        view.gaugeView5.metric = MetricEnum.Time
+        view.gaugeView6.metric = MetricEnum.Weight
     }
     
     func handleTap(sender: UITapGestureRecognizer? = nil) {
         let point = sender?.locationInView(self)
-        print(sender?.locationInView(self))
         for gauge in self.metrics() {
             if (gauge.pointBelongsTo(point!)) {
+                delegate?.didSelectMetric(gauge.metric)
                 gauge.didSelect()
             } else {
                 gauge.didUnselect()
@@ -65,12 +69,12 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     func setupFitnessMetrics() {
         setupFitnessMetrics(self)
     }
+    
 
     func metrics() -> [FitnessGaugeSliceView] {
         return [gaugeView1, gaugeView2, gaugeView3, gaugeView4, gaugeView5, gaugeView6]
     }
 }
-
 
 extension UIView {
     func cloneConstraints(toView: UIView) {
@@ -87,4 +91,8 @@ extension UIView {
             toView.addConstraint(constraint)
         }
     }
+}
+
+protocol FitnessGaugeDelegate: class {
+    func didSelectMetric(metric: MetricEnum)
 }

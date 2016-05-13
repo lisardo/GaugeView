@@ -12,8 +12,11 @@ import GaugeView
 @IBDesignable public class FitnessGaugeSliceView: UIView {
     
     var gaugeView: GaugeView!
-    var startLine: CAShapeLayer = CAShapeLayer()
-    var finishLine: CAShapeLayer = CAShapeLayer()
+    var startLine = CAShapeLayer()
+    var finishLine = CAShapeLayer()
+    var selected = false
+    
+    var metric: MetricEnum!
 
     @IBInspectable public var startAngle: Float = 0.0
     @IBInspectable public var percentage: Float = 0.0 {
@@ -48,35 +51,6 @@ import GaugeView
         drawAnchorLines()
         setupGaugeView()
     }
-    
-//    func drawAnchorLine() {
-//        
-//        let path = UIBezierPath()
-//        
-//        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-//        
-//        let length: Float = Float(self.frame.width)/2.0
-//        
-//        var deltax = CGFloat(cos(self.startAngle.degreesToRadians)*100.0)
-//        var deltay = CGFloat(sin(self.startAngle.degreesToRadians)*100.0)
-//        let p1 = CGPointMake(center.x + deltax, center.y + deltay)
-//        
-//        deltax = CGFloat(cos(self.startAngle.degreesToRadians)*length )
-//        deltay = CGFloat(sin(self.startAngle.degreesToRadians)*length )
-//        let p2 = CGPointMake(center.x + deltax, center.y + deltay)
-//        
-//        path.moveToPoint(p1)
-//        path.addLineToPoint(p2)
-//        
-//        line = CAShapeLayer()
-//        line.path = path.CGPath
-//        line.strokeColor = UIColor.grayColor().CGColor
-//        line.lineWidth = 1.5
-//        line.fillColor = UIColor.clearColor().CGColor
-//        
-//        self.layer.addSublayer(line)
-//        
-//    }
     
     func drawAnchorLines() {
         drawLine(startAngle, line: startLine)
@@ -144,28 +118,31 @@ import GaugeView
         if (pointAngle < 0) {
             pointAngle += CGFloat(M_PI*2.0)
         }
-        print(endAngle)
-        print(startAngle)
-        print(pointAngle)
         
         return (startAngle < pointAngle) && (endAngle > pointAngle)
     }
     
     func didSelect() {
-        startLine.strokeColor = UIColor.redColor().CGColor
-        finishLine.strokeColor = UIColor.redColor().CGColor
-        superview?.bringSubviewToFront(self)
-        self.gaugeView.gaugeColor = UIColor.redColor()
-        self.gaugeView.setNeedsDisplay()
-        self.gaugeView.percentage += 0.001
+        if !selected {
+            selected = true
+            startLine.strokeColor = UIColor.redColor().CGColor
+            finishLine.strokeColor = UIColor.redColor().CGColor
+            superview?.bringSubviewToFront(self)
+            self.gaugeView.gaugeColor = UIColor.redColor()
+            self.gaugeView.setNeedsDisplay()
+            self.gaugeView.percentage += 0.001
+        }
     }
     
     func didUnselect() {
-        startLine.strokeColor = UIColor.grayColor().CGColor
-        finishLine.strokeColor = UIColor.grayColor().CGColor
-        self.gaugeView.gaugeColor = UIColor.grayColor()
-        self.gaugeView.setNeedsDisplay()
-        self.gaugeView.percentage -= 0.001
+        if selected {
+            selected = false
+            startLine.strokeColor = UIColor.grayColor().CGColor
+            finishLine.strokeColor = UIColor.grayColor().CGColor
+            self.gaugeView.gaugeColor = UIColor.grayColor()
+            self.gaugeView.setNeedsDisplay()
+            self.gaugeView.percentage -= 0.001
+        }
     }
 }
 
