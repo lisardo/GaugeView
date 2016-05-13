@@ -11,6 +11,9 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var gaugeView5: FitnessGaugeSliceView!
     @IBOutlet weak var gaugeView6: FitnessGaugeSliceView!
     
+    @IBOutlet weak var centerValue: UILabel!
+    @IBOutlet weak var centerTitle: UILabel!
+    
     var flag = false
     weak var delegate: FitnessGaugeDelegate?
     
@@ -52,6 +55,8 @@ class FitnessGaugeView: UIView, UIGestureRecognizerDelegate {
             if (gauge.pointBelongsTo(point!)) {
                 delegate?.didSelectMetric(gauge.metric)
                 gauge.didSelect()
+                centerTitle.text = gauge.metric.rawValue
+                centerValue.text = "\(gauge.gaugeView.percentage)"
             } else {
                 gauge.didUnselect()
             }

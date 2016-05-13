@@ -149,6 +149,8 @@
                 <constraint firstItem="cgr-Wy-N59" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zAq-P3-EPQ"/>
             </constraints>
             <connections>
+                <outlet property="centerTitle" destination="3sp-iY-uy3" id="Efq-vP-K61"/>
+                <outlet property="centerValue" destination="pmK-Nm-494" id="PiL-aV-Z9E"/>
                 <outlet property="gaugeView1" destination="w92-z0-bbv" id="cQn-BI-mKX"/>
                 <outlet property="gaugeView2" destination="jmN-Ec-YEn" id="bll-JW-hDz"/>
                 <outlet property="gaugeView3" destination="xdl-ba-v8w" id="pb8-jF-qfb"/>

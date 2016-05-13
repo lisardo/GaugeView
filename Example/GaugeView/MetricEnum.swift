@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum MetricEnum {
-    case Time
-    case Weight
-    case BodyMass
-    case Strenght
-    case CheckIns
-    case CGBold
+enum MetricEnum: String {
+    case Time = "Time assessement"
+    case Weight = "Weight"
+    case BodyMass = "Body Mass"
+    case Strenght = "Strenght"
+    case CheckIns = "Check Ins"
+    case CGBold = "CGBold"
 }
