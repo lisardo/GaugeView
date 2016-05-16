@@ -17,7 +17,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmN-Ec-YEn" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
@@ -26,7 +25,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="60"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-ba-v8w" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
@@ -35,7 +33,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="120"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efh-sR-vWy" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
@@ -44,7 +41,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="180"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pj8-we-gxG" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
@@ -53,16 +49,14 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="240"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bs8-yr-uXy" customClass="FitnessGaugeSliceView" customModule="GaugeView_Example">
-                    <rect key="frame" x="0.0" y="-1" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <real key="value" value="300"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heck"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RadialGradientAlpha" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-GJ-pC0">
@@ -149,6 +143,5 @@
     </objects>
     <resources>
         <image name="RadialGradientAlpha" width="360" height="360"/>
-        <image name="heck" width="438" height="434"/>
     </resources>
 </document>

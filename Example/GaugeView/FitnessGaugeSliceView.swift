@@ -11,17 +11,26 @@ import GaugeView
     var metric: MetricEnum!
     
     @IBInspectable public var startAngle: Float = 0.0
-    @IBInspectable public var image: UIImage = UIImage(named: "heck")!
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addSubview(gaugeView)
+        setupGaugeView()
         setupImage()
-        drawAnchorLines()
+    }
+    
+    internal override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupGaugeView()
+        setupImage()
+    }
+    
+    func setupGaugeView() {
+        gaugeView = GaugeView(frame: frame)
+        addSubview(gaugeView)
     }
     
     private func setupImage() {
-        imageView = UIImageView(image: image)
+        imageView = UIImageView(image: UIImage(named: "heck"))
         addSubview(imageView)
     }
     
